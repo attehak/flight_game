@@ -34,3 +34,4 @@ print("valitse maa (1) Amerikka (2) Espanja (3) Kiina
 #haetaan sql databasesta isot lentokentät valitusta maasta
 
 #arvotaan maan isoista lentokentistä yksi random.randint jutul
+ok 
