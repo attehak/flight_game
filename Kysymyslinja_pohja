@@ -1,7 +1,7 @@
 import time
 import sys
 
-attte = 0
+takaisin = 0
 print("你好欢迎来到中国!") # Welcome to China!
 time.sleep(0.3)
 print("您是来出差还是旅游?") # Are you here on business or pleasure?
@@ -37,7 +37,8 @@ while True:
                     break
                 elif vastaus.lower() == 'c':
                     print("Hävisit pelin!")
-                    sys.exit
+                    time.sleep(2)
+                    sys.exit()
                 elif vastaus.lower() == 'b':
                     print("Hello")
                 else:
