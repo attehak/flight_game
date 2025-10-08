@@ -66,6 +66,20 @@ def lomailu():
         else:
             print("Anna numeroita, kiitos.")
 
+def end_screen ():
+
+    the_end = r"""
+████████╗██╗  ██╗███████╗     ███████╗███╗   ██╗██████╗ 
+╚══██╔══╝██║  ██║██╔════╝     ██╔════╝████╗  ██║██╔══██╗
+   ██║   ███████║█████╗       █████╗  ██╔██╗ ██║██║  ██║
+   ██║   ██╔══██║██╔══╝       ██╔══╝  ██║╚██╗██║██║  ██║
+   ██║   ██║  ██║███████╗     ███████╗██║ ╚████║██████╔╝
+   ╚═╝   ╚═╝  ╚═╝╚══════╝     ╚══════╝╚═╝  ╚═══╝╚═════╝ 
+"""
+    print(the_end)
+    print("Prototype by: \n --> Aleksi, Atte, Eetu ja Juuso <--")
+#Voidaan heittää loppuun taikka kyselyn if lauseeseen if elämät <0 = end_screen() ja sys exit
+
         
 
     print(f"Lomailu alkaa... ({aika} sekuntia)")

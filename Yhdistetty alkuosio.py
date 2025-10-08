@@ -159,6 +159,40 @@ def hae_satunnainen_iso_lentokentta(maa):
         print(f"Maasta {maa} ei löytynyt iso lentokenttää tietokannasta.")
         return None
 
+def lomailu():
+  
+    while True:
+        aika_input = input("Kauan haluat lomailla (sekunteina)?: ")
+        if aika_input.isdigit():
+            aika = int(aika_input)
+            break
+        else:
+            print("Anna numeroita, kiitos.")
+
+        
+
+    print(f"Lomailu alkaa... ({aika} sekuntia)")
+    while 0 <= aika:
+        print(".")
+        aika = aika - 1
+        time.sleep(1)
+
+    print("Lomailu loppui!")
+# Voidaan kutsua milloin vain, vaikka kyselyn lopussa jos halutaan lomailla.
+def end_screen ():
+
+    the_end = r"""
+████████╗██╗  ██╗███████╗     ███████╗███╗   ██╗██████╗ 
+╚══██╔══╝██║  ██║██╔════╝     ██╔════╝████╗  ██║██╔══██╗
+   ██║   ███████║█████╗       █████╗  ██╔██╗ ██║██║  ██║
+   ██║   ██╔══██║██╔══╝       ██╔══╝  ██║╚██╗██║██║  ██║
+   ██║   ██║  ██║███████╗     ███████╗██║ ╚████║██████╔╝
+   ╚═╝   ╚═╝  ╚═╝╚══════╝     ╚══════╝╚═╝  ╚═══╝╚═════╝ 
+"""
+    print(the_end)
+    print("Prototype by: \n --> Aleksi, Atte, Eetu ja Juuso <--")
+#Voidaan heittää loppuun taikka kyselyn if lauseeseen if elämät <0 = end_screen() ja sys exit
+
 # While-silmukka maan valintaan nyt toimii oikein 
 valittu_maa = None
 valittu_lentokenttä = None
@@ -181,8 +215,8 @@ elif lentokenttä_maa == "AU":
     print("Varo hämähäkkejä")
 elif lentokenttä_maa == "CH":
     print("Ni hao!") #valitkaa oma
-elif lentokenttä_maa == "GB":
-    print("Tea time!")  #valitkaa oma
+elif lentokenttä_maa == "SE":
+    print("jättebra")  #valitkaa oma
 elif lentokenttä_maa == "DE":
     print("Guten Tag!") #valitkaa oma 
 else:
@@ -207,7 +241,7 @@ while True:
         
         print("\n-------------------")
         print("Uusi maa")
-        print("Sallitut maat: US (USA), DE (Saksa), GB (Britannia), CH (Kiina), AU (Australia)")
+        print("Sallitut maat: US (USA), DE (Saksa), SE (Ruotsi), CH (Kiina), AU (Australia)")
         print("-------------------\n")
         
         while uusi_valittu_maa is None or uusi_valittu_lentokenttä is None:
@@ -251,3 +285,4 @@ for i in range(30):
     time.sleep(0.3)
 
 print(f"Saavuit {pelaaja_nimi}, {lentokenttä_nimi}!")
+
