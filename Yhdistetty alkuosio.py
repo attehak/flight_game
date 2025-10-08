@@ -48,10 +48,10 @@ while not pelaaja_nimi.strip():
 time.sleep(0.3)
 print(f"Terve {pelaaja_nimi} ja tervetuloa seikkailemaan maailman ympäri")
 time.sleep(1)
-print(f"Valitse viidestä maasta (Usa, Deutschland, Great Britain, China tai Australia) mieluisa, jonne haluat mennä.") # lyhenteet poistettu
+print(f"Valitse viidestä maasta (Usa, Deutschland, Ruotsi, China tai Australia) mieluisa, jonne haluat mennä.") # lyhenteet poistettu
 
 # Sallitut maat
-sallitut_maat = ["US", "DE", "GB", "CH", "AU"]
+sallitut_maat = ["US", "DE", "SE", "CH", "AU"]
 
 def Ruotsi_kysely ():
     print("Hejsan hur mår du?")
@@ -197,7 +197,7 @@ def end_screen ():
 valittu_maa = None
 valittu_lentokenttä = None
 while valittu_maa is None or valittu_lentokenttä is None:
-    maa_input = input("\nKirjoita valitsemasi maa, kiitos! (sallitut: US, DE, GB, CH, AU): ").strip().upper()
+    maa_input = input("\nKirjoita valitsemasi maa, kiitos! (sallitut: US, DE, SE, CH, AU): ").strip().upper()
     if maa_input not in sallitut_maat:
         print(f"Virheellinen maa tai syöte! Sallitut vaihtoehdot ovat: {', '.join(sallitut_maat)}. Yritä uudelleen.")
         valittu_maa = None  
@@ -286,3 +286,13 @@ for i in range(30):
 
 print(f"Saavuit {pelaaja_nimi}, {lentokenttä_nimi}!")
 
+while True:
+    #kelasin, että tähä tulis ne kyselyt
+
+    if lentokenttä_maa == "SE":
+        Ruotsi_kysely()
+    else:
+        lomailu()
+
+time.sleep(4)
+end_screen()
