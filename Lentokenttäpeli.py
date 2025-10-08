@@ -54,5 +54,25 @@ def hae_satunnainen_iso_lentokentta(maa):
     else:
         print(f"Kokeile kirjoittaa maa uudestaa, sillä maasta {maa} ei löytynyt isoa lentokenttää.")
 
+def lomailu():
+# voidaan kutusa myöhemssä vaiheessa, jos haluaa "lomailla".
+    while True:
+        aika_input = input("Kauan haluat lomailla (sekunteina)?: ")
+        if aika_input.isdigit():
+            aika = int(aika_input)
+            break
+        else:
+            print("Anna numeroita, kiitos.")
+
+        
+
+    print(f"Lomailu alkaa... ({aika} sekuntia)")
+    while 0 <= aika:
+        print(".")
+        aika = aika - 1
+        time.sleep(1)
+
+    print("Lomailu loppui!")
+
 hae_satunnainen_iso_lentokentta(str(input("Anna maa, kiitos (esim. US): ")))
 # hakee maa perusteella esim US iso_country taulua käyttämällä random lentokentän, jonka type on large airport.
