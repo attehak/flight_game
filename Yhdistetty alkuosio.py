@@ -9,9 +9,9 @@ import sys
 yhteys = mysql.connector.connect(
     host="127.0.0.1",
     port=3306,
-    database="flight_game",
-    user="juuso", #oma
-    password="root",#oma
+    database="fligth_game",
+    user="aleksi", #oma
+    password="salasana",#oma
     autocommit=True
 )
 
@@ -48,7 +48,7 @@ while not pelaaja_nimi.strip():
 time.sleep(0.3)
 print(f"Terve {pelaaja_nimi} ja tervetuloa seikkailemaan maailman ympäri")
 time.sleep(1)
-print(f"Valitse viidestä maasta (Usa, Deutschland, Ruotsi, China tai Australia) mieluisa, jonne haluat mennä.") # lyhenteet poistettu
+print(f"Valitse viidestä maasta (Usa, Deutschland, Sweden, China tai Australia) mieluisa, jonne haluat mennä.") # lyhenteet poistettu
 
 # Sallitut maat
 sallitut_maat = ["US", "DE", "SE", "CH", "AU"]
@@ -145,6 +145,326 @@ def Ruotsi_kysely ():
             print("\n")
             continue
 
+
+def australia_kysymykset():
+    global pelaaja_elamat 
+    elamat = len(pelaaja_elamat)
+    kysymykset = [
+        {
+            "kysymys": "Do you have a valid visa for your stay in Australia?",
+            "vaihtoehdot": {
+                "a": "Yes, I have an approved ETA visa for tourism.",
+                "b": "No, I thought I could enter without one.",
+                "c": "I'm not sure; can I apply at the airport?"
+            },
+            "oikea": "a",
+            "rangaistus": {"b": 5, "c": 5}
+        },
+        {
+            "kysymys": "Have you completed the Incoming Passenger Card correctly?",
+            "vaihtoehdot": {
+                "a": "Yes, but I guessed on some biosecurity questions.",
+                "b": "Yes, I filled in everything honestly, including health and biosecurity details.",
+                "c": "No, I skipped it; it's too long."
+            },
+            "oikea": "b",
+            "rangaistus": {"a": 2, "c": 4}
+        },
+        {
+            "kysymys": "Do you have any fruits, vegetables or plants in your luggage?",
+            "vaihtoehdot": {
+                "a": "Yes, but only a banana; it's harmless.",
+                "b": "Maybe, I forgot to check my bag.",
+                "c": "No, I have nothing to declare; I followed the rules online before travel."
+            },
+            "oikea": "c",
+            "rangaistus": {"a": 2, "b": 3}
+        },
+        {
+            "kysymys": "Did you declare all food and animal products on your Incoming Passenger Card?",
+            "vaihtoehdot": {
+                "a": "Yes, I declare everything to avoid fines; biosecurity protects Australia's unique wildlife.",
+                "b": "No, just a little cheese for snacks.",
+                "c": "Why bother? It's personal items."
+            },
+            "oikea": "a",
+            "rangaistus": {"b": 2, "c": 3}
+        },
+        {
+            "kysymys": "Are your bags ready for X-ray and sniffer dog inspection after baggage claim?",
+            "vaihtoehdot": {
+                "a": "No, I have some wooden souvenirs that might be restricted.",
+                "b": "Yes, I packed according to rules: no fresh foods, seeds or wooden items without quarantine.",
+                "c": "I didn't think about it; dogs won't find anything small."
+            },
+            "oikea": "b",
+            "rangaistus": {"a": 3, "c": 2}
+        },
+        {
+            "kysymys": "Do you have Australian dollars or a card for any potential fees or transport?",
+            "vaihtoehdot": {
+                "a": "Yes, but only cash; no card.",
+                "b": "No, I'll use only euros; it's fine.",
+                "c": "Yes, I exchanged some AUD and have a no-fee international card ready for ATMs or taxis."
+            },
+            "oikea": "c",
+            "rangaistus": {"a": 1, "b": 2}
+        },
+        {
+            "kysymys": "Someone bumps into you at the airport; will you say 'sorry' politely?",
+            "vaihtoehdot": {
+                "a": "Yes, it's polite in Australia even if it's not my fault.",
+                "b": "No, only if I feel responsible.",
+                "c": "I ignore and keep walking; it's busy."
+            },
+            "oikea": "a",
+            "rangaistus": {"b": 2, "c": 3}
+        },
+        {
+            "kysymys": "Are you applying sunscreen before going outside the airport?",
+            "vaihtoehdot": {
+                "a": "No, it's just a short walk to the taxi.",
+                "b": "Yes, I always use SPF 50+ in Australia due to the hole in the ozone layer and high UV.",
+                "c": "Only if it's very sunny; otherwise no need."
+            },
+            "oikea": "b",
+            "rangaistus": {"a": 1, "c": 2}
+        },
+        {
+            "kysymys": "How will you get from the airport to your accommodation?",
+            "vaihtoehdot": {
+                "a": "I'll use official airport taxi, Skytrain or rideshare app like.",
+                "b": "Any random taxi outside; it's cheaper.",
+                "c": "Walk; it's not far from the city."
+            },
+            "oikea": "a",
+            "rangaistus": {"b": 2, "c": 3}
+        },
+        {
+            "kysymys": "Do you know the fines for undeclared biosecurity items in Australia?",
+            "vaihtoehdot": {
+                "a": "No, probably just a warning and confiscation.",
+                "b": "Yes, but only for large amounts; small snacks are ok.",
+                "c": "Yes, up to 4200 AUD per item or even jail; I double-checked all rules."
+            },
+            "oikea": "c",
+            "rangaistus": {"a": 2, "b": 3}
+        }
+    ]
+
+    print("\nTervetuloa Australian lentokentälle! Sinulla on 5 elämää.")
+    time.sleep(1)
+    print("\nTulli-virkailija alkaa kysyä sinulta kysymyksiä englanniksi.")
+    time.sleep(1)
+
+    for indeksi, kysymys in enumerate(kysymykset, 1):
+        print(f"\nKysymys {indeksi}: [{kysymys['kysymys']}]")
+        time.sleep(0.5)
+        for avain, vaihtoehto in kysymys["vaihtoehdot"].items():
+            print(f"  {avain}) [{vaihtoehto}]")
+            time.sleep(0.5)
+
+        while True:
+            vastaus = input("Vastauksesi (a/b/c): ").strip().lower()
+            if vastaus in ["a", "b", "c"]:
+                break
+            else:
+                print("Virheellinen vastaus! Yritä uudelleen (a/b/c). Ei rangaistusta.")
+                time.sleep(0.5)
+                for avain, vaihtoehto in kysymys["vaihtoehdot"].items():
+                    print(f"  {avain}) [{vaihtoehto}]")
+                time.sleep(0.5)
+
+        if vastaus == kysymys["oikea"]:
+            print("Oikein! Selvisit tästä haasteesta.")
+            time.sleep(0.5)
+        else:
+            menetetty = kysymys["rangaistus"].get(vastaus, 0)
+            elamat -= menetetty
+            pelaaja_elamat = pelaaja_elamat[:elamat]  
+            print(f"Väärin! Menetit {menetetty} elämää (valitsit {vastaus}). Jäljellä: {elamat}")
+            time.sleep(0.5)
+            if elamat <= 0:
+                print("Menetit kaikki elämät. Peli päättyy Australian lentokentällä.")
+                time.sleep(1)
+                sys.exit()
+
+    print("Onnittelut! Selvisit kaikista Australian lentokentän haasteista")
+    time.sleep(1)
+    return True
+
+
+def saksa(maa):
+    elamat = 3
+    # Sinulla on käytössä saksassa 3 elämää
+
+    if maa == "DE":
+        
+        Turvatarkastus_vai_ei = random.randint(0, 1)
+    # Arvotaan joudutko turvatarkastukseen vai et
+
+        if Turvatarkastus_vai_ei == 0:
+        # 0 = ei lisäkuulusteluja
+            print("Tervetuloa saksaan! Nauti reissustasi")
+            lomailu(pelaaja_nimi, elamat)
+            return elamat
+    time.sleep(1)
+    print("Lentokentän tullimiehet pyytävät sinut lisäkuulusteluihin.")
+    time.sleep(2)
+    print("Millä kielellä haluat hoitaa kuulustelut:\n"
+          "(A) Englanti (Virkailija ei osaa saksaa)")
+
+    # kysytään kieliä kunnes saadaan hyväksytty vastaus
+    while True:
+        kielivalinta = input("Valitse kieli (A): ").strip().lower()
+        if kielivalinta == "a":
+            # Englanninkielinen
+            time.sleep(0.7)
+            print(f"Hello, {pelaaja_nimi}. What brings you to Deutschland?")
+            time.sleep(0.7)
+            print("(A) Vacation\n"
+                  "(B) Visiting family/relatives\n"
+                  "(C) I want to bomb this country")
+
+            # kysymys 1: toistetaan kunnes saadaan hyväksytty vastaus
+            while True:
+                kysymys1_vastaus = input("Valitse (A, B tai C): ").strip().lower()
+                if kysymys1_vastaus == "c":
+                    time.sleep(1)
+                    print("Valitettavasti tullimiehet eivät tykänneet uhkauksestasi.\n")
+                    elamat = elamat - 1
+                    time.sleep(1)
+                    print(f"Menetit yhden elämistäsi, sinulla on jäljellä {elamat} elämää.")
+                    # tässä voi päättää haluatko lopettaa pelin vai antaa jatkaa; käytetään sys.exit()
+                    break
+                elif kysymys1_vastaus in ("a", "b"):
+                    print("Alright")
+                    break
+                else:
+                    print("Teit jotain väärin, yritä uudelleen.")
+            time.sleep(2)
+            print("Do you have knives etc in your luggage?:\n"
+                  "(A) No, i dont\n"
+                  "(B) Yes, i do\n"
+                  "(C) I'm not sure")
+
+            while True:
+                kysymys3_vastaus = input("Answer the question: (A, B, C): ").strip().lower()
+                if kysymys3_vastaus == "b":
+                    print("We found them, we will bring you to court.")
+                    time.sleep(2)
+                    print("Saksalaiset löysivät kolme eri veistä, sait 10-vuoden vankilatuomion.")
+                    time.sleep(1)
+                    print("Hävisit pelin.")
+                    return 0
+                elif kysymys3_vastaus == "c":
+                    print("Alright, we're gonna search your bag")
+                    time.sleep(1)
+                    print("Searching")
+                    time.sleep(2)
+                    print(".")
+                    time.sleep(2)
+                    print(".")
+                    time.sleep(2)
+                    print(".")
+                    time.sleep(1)
+                    print("Bag searched succesfully.")
+                    loytyko_teravia = random.randint(1, 3)
+                    if loytyko_teravia == 3:
+                        time.sleep(2)
+                        print("We found knife from your luggage.")
+                        elamat = elamat - 1
+                        print(f"Menetit yhden elämän, sinulla on {elamat} elämää jäljellä.")
+                        time.sleep(2)
+                        print("We will have to seize your knife.")
+                        time.sleep(2)
+                        print("Security check is over.")
+                        time.sleep(2)
+                        if elamat == 0:
+                            print("Hävisit pelin, menetit kaikki elämäsi.")
+                            sys.exit()
+                        else:
+                            print("You're good to go, Have fun!")
+                            lomailu(pelaaja_nimi, elamat)
+                            return elamat
+                    else:
+                        print("We didnt find anything sharp, you're good to go, Have fun!")
+                        lomailu(pelaaja_nimi, elamat)
+                        return elamat
+                elif kysymys3_vastaus == "a":
+                    print("You're good to go, Have fun!")
+                    lomailu(pelaaja_nimi, elamat)
+                    return elamat
+                else:
+                    print("Teit jotain väärin, yritä uudelleen.")
+
+        
+        else:
+            print("Nyt teit jotain väärin, yritä uudelleen.")
+            # silmukka jatkuu ja kysyy kielivalinnan uudelleen
+def lomailu(pelaaja_nimi, elamat):
+    if elamat == 0:
+        return
+    else:
+        time.sleep(2)
+        print("Tervetuloa Saksaan! Lähde kävelylle (käsky)")
+        time.sleep(2)
+        print("Kävellään...")
+        time.sleep(2)
+        print(".")
+        time.sleep(2)
+        print("Saksalainen mies kansallispuvussa lähestyy sinua ja tajuat että on Oktoberfest\n" \
+        "Mitä aiot tehdä oktoberfestinä?:\n " \
+        "(A) Juoda itsesi kaatokänniin\n" \
+        "(B) Juon sivistyneesti\n" \
+        "(C) Nukun lentokentällä\n")
+    while True:
+        kavely1 = str(input("Valitse vaihtoehto (A, B, C): "))
+
+        if kavely1 == "a":
+            print("Sinulla oli hauskaa muiden kanssa humalassa ja saksalaiset arvostivat sinua.")
+            time.sleep(1.5)
+            print("Ansaitsit yhden elämän lisää tästä!")
+            elamat = elamat + 1
+            print(f"Sinulla on nyt {elamat} elämää.")
+        
+        elif kavely1 in ("c", "b"):
+            print("Saksalaiset pitivät sinua luuserina, koska et juonut perinteen mukaan kunnolla.")
+            time.sleep(1.5)
+            elamat = elamat - 1
+            print(f"Sinulla on nyt {elamat} elämää.")
+            if elamat == 0:
+                print("Hävisit pelin.")
+                sys.exit()
+        else:
+            print("Yritä uudelleen!")
+        
+        time.sleep(2)
+        print("Haluatko mennä nukkumaan vai kuulla faktan saksasta?\n" \
+        "(A) Nukkumaan"
+        "(B) Haluan kuulla faktan")
+        fakta_vai_ei = str(input("Valitse A vai B: "))
+        
+        if fakta_vai_ei == "a":
+            print("Nukut nyt minuutin ajan, jonka jälkeen peli päättyy.")
+            time.sleep(60)
+            print(f"Lopulliset elämäsi olivat: {elamat} elämää.")
+            print(f"Kiitos pelauksesta, {pelaaja_nimi}.")
+            sys.exit()
+        elif fakta_vai_ei == "b":
+            print("Tiesitkö että saksassa on 1500 eri leipälajia.")
+            print(f"Lopulliset elämäsi olivat: {elamat} elämää.")
+            print(f"Kiitos pelauksesta, {pelaaja_nimi}.")
+            sys.exit()
+        else:
+            print("Yritä uudelleen")
+
+        
+        
+        
+        
+    
+
 def hae_satunnainen_iso_lentokentta(maa):
     sql = f"SELECT name, iso_country FROM airport WHERE iso_country = '{maa}' AND type = 'large_airport'"
     cursor = yhteys.cursor()
@@ -159,7 +479,7 @@ def hae_satunnainen_iso_lentokentta(maa):
         print(f"Maasta {maa} ei löytynyt iso lentokenttää tietokannasta.")
         return None
 
-def lomailu():
+def lomailu_R():
   
     while True:
         aika_input = input("Kauan haluat lomailla (sekunteina)?: ")
@@ -291,8 +611,17 @@ while True:
 
     if lentokenttä_maa == "SE":
         Ruotsi_kysely()
+        lomailu_R()
+        break
+    elif lentokenttä_maa == "DE":
+        saksa(maa=lentokenttä_maa)
+    elif lentokenttä_maa == "AU":
+        australia_kysymykset()
+    elif lentokenttä_maa == "CN":
+        print("ok")
     else:
         lomailu()
+        break
 
 time.sleep(4)
 end_screen()
