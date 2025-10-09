@@ -256,4 +256,3 @@ def kiina():
                     sys.exit() 
                     
                 print("Painoit nyt jotain väärää nappia, yritä uudestaan!\n")
-        print("Painoit nyt jotain väärää nappia, yritä uudestaan!\n")
