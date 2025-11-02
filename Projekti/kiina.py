@@ -1,4 +1,15 @@
+<<<<<<< HEAD
 def kiina():
+=======
+import time
+import sys
+
+def end_screen():
+    # Basic end screen function to avoid NameError; extend as needed.
+    print("Kiitos pelaamisesta. Näkemiin!")
+
+def kiina(lentokenttä_nimi, pelaaja_nimi):
+>>>>>>> ae5bffb (Teen chatbotin ja lisään sen yhteydenottosivulle)
     takaisin = 0
     elämät = 5
     print(f"Saavut Kiinaan {lentokenttä_nimi} lentokentälle!")
