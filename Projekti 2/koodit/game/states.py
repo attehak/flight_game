@@ -12,15 +12,23 @@ def intro(state, answer=None, carry=None):
     # 1 — maan valinta
     if state == 1:
         pelaaja_nimi = answer.strip()
+        option_texts = [
+            ("US", "USA"),
+            ("DE", "Germany"),
+            ("SE", "Sweden"),
+            ("CN", "China"),
+            ("AU", "Australia")
+        ]
         return {
             "text": [
                 f"Terve {pelaaja_nimi}!",
                 "Valitse maa:"
             ],
             "choices": ["US", "DE", "SE", "CN", "AU"],
+            "option_texts": option_texts,
             "next_state": 2,
             "carry": pelaaja_nimi
-        }
+    }
 
     # 2 — lentokentän arvonta
     if state == 2:
