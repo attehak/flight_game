@@ -1,6 +1,6 @@
 /* About background image */
 .about-bg {
-  background-image: url('../html/kuva1.jpg'); /* adjust path if needed */
+  background-image: url('../kuvat/kuva1.jpg'); /* adjust path if needed */
   min-height: 100vh;
   background-position: center;
   background-size: cover;
