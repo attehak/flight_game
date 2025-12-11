@@ -9,13 +9,12 @@
 <body>
 
 <h1>Flight Game</h1>
-<!-- kommenttina kunnes kaikki muu toimii myös app.py linja 27 ja states_sweden
+
 {% if line %}
 <pre style="white-space: pre-wrap; font-family: monospace; font-size: 14px;">
 {{ line }}
 </pre>
 {% endif %}
--->
 
 <div id="text-box">
     {% for t in text %}
@@ -24,24 +23,27 @@
 </div>
 
 <form method="post" action="{{ next_url }}">
+   
     <input type="hidden" name="state" value="{{ next_state }}">
-    {% if carry %}
-        <input type="hidden" name="carry" value="{{ carry }}">
-    {% endif %}
+    <input type="hidden" name="carry" value="{{ carry }}">
 
     {% if input_type == "text" %}
+      
         <input type="text" name="answer" required>
         <button type="submit">OK</button>
 
-    {% elif option_texts %}
-        {% for c, t in option_texts %}
-            <button name="answer" value="{{ c }}">{{ t }}</button>
+    {% elif choices %}
+      
+        {% for c in choices %}
+            <button type="submit" name="answer" value="{{ c }}">{{ c }}</button>
         {% endfor %}
 
     {% else %}
+       
         <button type="submit">Jatka</button>
     {% endif %}
 </form>
 
 </body>
 </html>
+
