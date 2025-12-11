@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, session
 from database import db
 from states import intro
+from states_australia import australia_story
 
 app = Flask(__name__)
 app.secret_key = "super_secret_key"   # session avain
@@ -11,22 +12,20 @@ def game():
     state = int(request.values.get("state", 0))
     answer = request.values.get("answer")
     carry = request.values.get("carry")
-    
-    if state == 0:
-        session.clear()  # puhdas alku jos restart
 
     result = intro(state, answer, carry)
 
+    # siirtää valittuun maahan
     if "redirect" in result:
         return redirect(result["redirect"])
 
     return render_template(
         "scene.html",
         text=result["text"],
-        choices=result.get("choices", []),
+        choices=result["choices"],
         next_state=result["next_state"],
-        option_texts=result.get("option_texts", []),
         input_type=result.get("input_type"),
+        line=result.get("ascii", ""),
         next_url="/game",
         carry=result.get("carry", "")
     )
@@ -44,8 +43,7 @@ def story_sweden():
     return render_template(
         "scene.html",
         text=result["text"],
-        choices=result.get("choices", []),
-        option_texts=result.get("option_texts", []),
+        choices=result["choices"],
         input_type=result.get("input_type", ""),
         line=result.get("ascii", ""),
         next_state=result["next_state"],
@@ -54,6 +52,33 @@ def story_sweden():
     )
 
 
+@app.route("/story/australia", methods=["GET", "POST"])
+def story_australia_route():
+    state = int(request.values.get("state", 0))
+    answer = request.values.get("answer")
+    carry = request.values.get("carry", "")
+
+    print("STATE:", state, "ANSWER:", repr(answer))
+
+    result = australia_story(state, answer, carry)
+    print("RESULT:", result)
+
+    if "redirect" in result:
+        return redirect(result["redirect"])
+
+    return render_template(
+        "scene.html",
+        text=result["text"],
+        choices=result["choices"],
+        input_type=result.get("input_type", ""),
+        line=result.get("ascii", ""),
+        next_state=result["next_state"],
+        next_url="/story/australia",
+        carry=result.get("carry", "")
+    )
+
+
+print(app.url_map)
 
 if __name__ == "__main__":
     app.run(debug=True)
