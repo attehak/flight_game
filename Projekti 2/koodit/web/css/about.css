@@ -1,0 +1,55 @@
+/* About background image */
+.about-bg {
+  background-image: url('../html/kuva1.jpg'); /* adjust path if needed */
+  min-height: 100vh;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  padding-top: 120px;
+}
+
+/* Card container */
+.about-card {
+  background: rgba(0, 0, 0, 0.75);
+  max-width: 900px;
+  width: 90%;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  color: white;
+  font-family: Raleway, sans-serif;
+}
+
+/* Typography */
+.about-card h1 {
+  font-size: 2.3rem;
+  margin-bottom: 20px;
+}
+
+.about-card h2 {
+  margin-top: 25px;
+  font-size: 1.5rem;
+}
+
+/* Lists */
+.about-card ul {
+  padding-left: 20px;
+}
+
+.team-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.team-list li::before {
+  content: "✈ ";
+  margin-right: 6px;
+}
+
+.about-meta {
+  margin-top: 20px;
+  font-size: 0.85rem;
+  color: #ccc;
+}

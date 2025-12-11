@@ -1,0 +1,214 @@
+/* ------------------------------
+   GLOBAL STYLES
+------------------------------ */
+
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: "Raleway", sans-serif;
+    color: white;
+    height: 100%;
+    background-color: #111;
+}
+
+/* ------------------------------
+   TOPBAR
+------------------------------ */
+
+.topbar {
+    width: 100%;
+    background: black;
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-size: 35px;
+}
+
+.nav a {
+    text-decoration: none;
+    color: white;
+    margin-left: 30px;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+.nav a:hover, .nav .active {
+    color: #00bfff;
+}
+
+/* ------------------------------
+   BACKGROUND
+------------------------------ */
+
+.game-bg {
+    background-image: url('kuva1.jpg'); /* Change if needed */
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    padding-top: 120px;
+}
+
+/* ------------------------------
+   GAME CARD
+------------------------------ */
+
+.game-card {
+    background: rgba(0, 0, 0, 0.75);
+    width: 80%;
+    max-width: 900px;
+    margin: auto;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.7);
+}
+
+/* Title */
+.game-card h1 {
+    margin-top: 0;
+    font-size: 32px;
+}
+
+/* Labels */
+label {
+    font-weight: bold;
+    margin-top: 20px;
+    display: block;
+}
+
+/* Inputs */
+input, select {
+    width: 100%;
+    padding: 14px;
+    margin-top: 8px;
+    font-size: 18px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+}
+
+/* ------------------------------
+   BUTTONS
+------------------------------ */
+
+.start-btn {
+    width: 100%;
+    margin-top: 25px;
+    padding: 15px 0;
+    font-size: 20px;
+    background: #00bfff;
+    border: none;
+    color: black;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.start-btn:hover {
+    background: #33ccff;
+}
+
+.reset-btn {
+    width: 100%;
+    padding: 15px 0;
+    background: #d63c3c;
+    border: none;
+    color: white;
+    font-size: 20px;
+    border-radius: 10px;
+    margin-top: 30px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.reset-btn:hover {
+    background: #ff4d4d;
+}
+
+/* ------------------------------
+   STORY BOX
+------------------------------ */
+
+.story-box {
+    background: rgba(0,0,0,0.6);
+    padding: 20px;
+    border-radius: 10px;
+    min-height: 80px;
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+/* ------------------------------
+   CHOICE BUTTONS
+------------------------------ */
+
+#choices button {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    background: #222;
+    color: white;
+    border: 2px solid #00bfff;
+    border-radius: 8px;
+    margin-top: 12px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 18px;
+}
+
+#choices button:hover {
+    background: #00bfff;
+    color: black;
+}
+
+/* ------------------------------
+   AIRPLANE ANIMATION
+------------------------------ */
+
+.airplane {
+    font-size: 60px;
+    position: fixed;
+    top: 35%;
+    left: -200px;
+    opacity: 0;
+    transition: 1s;
+    z-index: 2000;
+}
+
+.airplane.fly {
+    opacity: 1;
+    transform: translateX(150vw);
+    transition: transform 2.5s linear, opacity 0.5s;
+}
+
+.hidden {
+    display: none;
+}
+
+/* ------------------------------
+   MOBILE RESPONSIVE
+------------------------------ */
+
+@media (max-width: 600px) {
+    .game-card {
+        width: 93%;
+        padding: 25px;
+    }
+
+    .nav a {
+        font-size: 16px;
+        margin-left: 15px;
+    }
+
+    .airplane {
+        font-size: 45px;
+    }
+}
