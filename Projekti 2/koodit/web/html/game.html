@@ -1,14 +1,73 @@
 <!DOCTYPE html>
-<html>
+<html lang="fi">
 <head>
-<title>Peli?</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lentopeli | Flight Game</title>
+
+    <!-- CORRECT CSS PATHS -->
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/game.css">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 </head>
 <body>
 
-<h1>--</h1>
-<p>:O</p>
+    <!-- HEADER -->
+    <div class="topbar">
+        <div class="logo">✈️</div>
+        <div class="nav">
+            <a href="/">Koti</a>
+            <a href="/about">Meistä</a>
+            <a href="/game" class="active">Lentopeli</a>
+            <a href="/contact">Ota yhteyttä</a>
+        </div>
+    </div>
 
+    <div class="game-bg">
+
+        <!-- ✈️ Airplane animation -->
+        <div id="airplane-animation" class="airplane hidden">✈️</div>
+
+        <main class="game-card">
+
+            <!-- START SCREEN -->
+            <div id="start-screen">
+                <h1>Aloita Lentopeli</h1>
+
+                <label for="player_name">Nimesi:</label>
+                <input type="text" id="player_name">
+
+                <label for="country">Valitse maa:</label>
+                <select id="country">
+                    <option value="">-- Valitse maa --</option>
+                    <option value="SE">Ruotsi</option>
+                    <option value="DE">Saksa</option>
+                    <option value="CN">Kiina</option>
+                    <option value="AU">Australia</option>
+                    <option value="US">USA</option>
+                </select>
+
+                <button class="start-btn" onclick="startGame()">Aloita peli</button>
+            </div>
+
+            <!-- GAME SCREEN -->
+            <div id="game-screen" style="display:none;">
+                <h2 id="player-info"></h2>
+                <p id="airport-info"></p>
+                <p id="lives-info"></p>
+
+                <div id="story-box" class="story-box"></div>
+
+                <div id="choices"></div>
+
+                <button onclick="resetGame()" class="reset-btn">Aloita alusta</button>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- JS FILE -->
+    <script src="/Javascript/game.js"></script>
 </body>
 </html>
-
-

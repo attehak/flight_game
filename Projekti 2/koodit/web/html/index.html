@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Flight Game</title>
-  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="/css/style.css">
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 </head>
@@ -13,19 +13,29 @@
   <div class="topbar">
     <div class="logo">✈️</div>
     <div class="nav">
-      <a href="index.html">Koti</a>
-      <a href="about.html">Meistä</a>
-      <a href="game.html">Lentopeli</a>
+      <a href="/">Koti</a>
+      <a href="/about">Meistä</a>
+      <a href="/game">Lentopeli</a>
+      <a href="/contact">Ota yhteyttä</a>
     </div>
   </div>
 
   <div class="bgimg">
     <div class="center-content">
-      <button class="start-btn">Aloita peli</button>
+      <!-- BUTTON OPENS game-->
+      <button class="start-btn" onclick="goToGame()">Aloita peli</button>
+
       <hr>
       <p>alpha 0.0.1</p>
     </div>
   </div>
+
+  <!-- JS Redirect -->
+  <script>
+    function goToGame() {
+      window.location.href = "/game";
+    }
+  </script>
 
 </body>
 </html>
