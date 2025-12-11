@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lentopelin Chat</title>
+<link rel="stylesheet" href="contact.css">
+</head>
+<body>
+  <button class="back-btn" onclick="history.back()">←</button>
+
+
+  <section class="contact-section">
+    <h2>Ota yhteyttä</h2>
+    <p>Liity Discord-ryhmäämme keskustellaksesi muiden pelaajien ja kehittäjän kanssa.</p>
+
+    <a href="https://discord.gg/uScrNtyz" 
+      target="_blank" 
+      class="discord-btn">
+      💬 Liity Discordiin
+    </a>
+
+    <p class="contact-note">
+    Voit myös lähettää meille viestin tai käyttää chatbottia.
+    </p>
+  </section>
+
+<!-- Chat open button -->
+<button class="chat-button" id="chatToggle">
+  💬 Chat
+</button>
+
+<!-- Chat window -->
+<div class="chatbox" id="chatbox">
+  <div class="chat-header">
+    Chatbot
+    <button id="closeChat">&times;</button>
+  </div>
+  <div class="messages" id="messages">
+    <div class="message host">
+      Hei! Olen Lentopelin botti. Kuinka voin auttaa sinua tänään?
+    </div>
+  </div>
+  <div class="input-area">
+    <input type="text" id="userInput" placeholder="Kirjoita kysymyksesi tähän...">
+    <button class="send" id="sendBtn">➤</button>
+  </div>
+</div>
+
+<script>
+  const chatButton = document.getElementById('chatToggle');
+  const chatbox = document.getElementById('chatbox');
+  const closeChat = document.getElementById('closeChat');
+  const messages = document.getElementById('messages');
+  const userInput = document.getElementById('userInput');
+  const sendBtn = document.getElementById('sendBtn');
+
+  // Toggle open/close chat
+  chatButton.addEventListener('click', () => {
+    chatbox.style.display = 'flex';
+    chatButton.style.display = 'none';
+  });
+
+  closeChat.addEventListener('click', () => {
+    chatbox.style.display = 'none';
+    chatButton.style.display = 'flex';
+  });
+
+  // Send message
+  sendBtn.addEventListener('click', sendMessage);
+  userInput.addEventListener('keypress', e => {
+    if (e.key === 'Enter') sendMessage();
+  });
+
+  function sendMessage() {
+    const text = userInput.value.trim();
+    if (text === '') return;
+
+    const playerMsg = document.createElement('div');
+    playerMsg.className = 'message player';
+    playerMsg.textContent = text;
+    messages.appendChild(playerMsg);
+    userInput.value = '';
+    messages.scrollTop = messages.scrollHeight;
+
+    // Simulated bot reply
+    setTimeout(() => {
+      const hostMsg = document.createElement('div');
+      hostMsg.className = 'message host';
+      hostMsg.textContent = getHostReply(text);
+      messages.appendChild(hostMsg);
+      messages.scrollTop = messages.scrollHeight;
+    }, 700);
+  }
+
+  function getHostReply(text) {
+    text = text.toLowerCase();
+    if (text.includes('apu') || text.includes('ongelma'))
+      return "Kerro vain, mikä ongelma sinulla on, niin autan.";
+    if (text.includes('lento') || text.includes('pelata'))
+      return "Pidä kone vakaana ja tarkista polttoaineen määrä.";
+    if (text.includes('hei') || text.includes('moi'))
+      return "Hei! Kiva nähdä sinut taas!";
+    return "Selvä! Välitän viestisi eteenpäin.";
+  }
+</script>
+</body>
+</html>
+

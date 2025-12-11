@@ -1,0 +1,185 @@
+ body {
+    font-family: Arial, sans-serif;
+    background: #161f29;
+    color: white;
+    height: 100vh;
+    margin: 0;
+  }
+
+  /* Chat button (collapsed) */
+  .chat-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #392d84;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 12px 18px;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+    z-index: 100;
+}
+
+  .chat-button:hover {
+    background: #093918;
+  }
+
+  .chat-button img {
+    width: 22px;
+    margin-right: 8px;
+  }
+
+  /* Chat window (hidden by default) */
+  .chatbox {
+    position: fixed;
+    bottom: 80px;
+    right: 20px;
+    width: 340px;
+    background: #fff;
+    color: #000;
+    border-radius: 10px;
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.3);
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    z-index: 101;
+  }
+
+  .chat-header {
+    background: #0c161d;
+    color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+  }
+
+  .chat-header button {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+  }
+
+  .messages {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+    background: #f1f9f1;
+  }
+
+  .message {
+    margin: 8px 0;
+    padding: 8px 12px;
+    border-radius: 10px;
+    max-width: 80%;
+    line-height: 1.4;
+  }
+
+  .player {
+    background: #d6f5d6;
+    align-self: flex-end;
+  }
+
+  .host {
+    background: #e0e0e0;
+    align-self: flex-start;
+  }
+
+  .input-area {
+    display: flex;
+    border-top: 1px solid #ccc;
+    background: #fff;
+  }
+
+  input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+  }
+
+  button.send {
+    background: #030608;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+  }
+
+  button.send:hover {
+    background: #004263;
+  }
+
+  /* Contact Page Wrapper */
+.contact-section {
+  padding: 40px;
+  text-align: center;
+  background: #16222f;
+  color: white;
+  margin-top: 40px;
+  border-radius: 10px;
+}
+
+/* Header */
+.contact-section h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+  color: #ffffff;
+}
+
+/* Text */
+.contact-section p {
+  color: #d7d7d7;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+/* Discord Button */
+.discord-btn {
+  display: inline-block;
+  background: #5865F2;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 16px;
+  transition: 0.2s;
+}
+
+.discord-btn:hover {
+  background: #30388e;
+}
+
+/* Extra Paragraph */
+.contact-note {
+  margin-top: 20px;
+  color: #aaaaaa;
+  font-size: 14px;
+}
+/* back button */
+.back-btn {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: #4b87bc;
+  color: white;
+  border: none;
+  padding: 8px 15px;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.back-btn:hover {
+  background: #778d98;
+}
