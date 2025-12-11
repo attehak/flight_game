@@ -11,20 +11,22 @@ def game():
     state = int(request.values.get("state", 0))
     answer = request.values.get("answer")
     carry = request.values.get("carry")
+    
+    if state == 0:
+        session.clear()  # puhdas alku jos restart
 
     result = intro(state, answer, carry)
 
-    # siirtää valittuun maahan
     if "redirect" in result:
         return redirect(result["redirect"])
 
     return render_template(
         "scene.html",
         text=result["text"],
-        choices=result["choices"],
+        choices=result.get("choices", []),
         next_state=result["next_state"],
+        option_texts=result.get("option_texts", []),
         input_type=result.get("input_type"),
-        line=result.get("ascii", ""),
         next_url="/game",
         carry=result.get("carry", "")
     )
@@ -42,13 +44,15 @@ def story_sweden():
     return render_template(
         "scene.html",
         text=result["text"],
-        choices=result["choices"],
+        choices=result.get("choices", []),
+        option_texts=result.get("option_texts", []),
         input_type=result.get("input_type", ""),
         line=result.get("ascii", ""),
         next_state=result["next_state"],
         next_url="/story/sweden",
         carry=""
     )
+
 
 
 if __name__ == "__main__":
