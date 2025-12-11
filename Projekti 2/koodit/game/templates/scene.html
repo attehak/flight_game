@@ -9,18 +9,23 @@
 <body>
 
 <h1>Flight Game</h1>
+
+{% if line %}
 <pre style="white-space: pre-wrap; font-family: monospace; font-size: 14px;">
-    {{ line }}
+{{ line }}
 </pre>
+{% endif %}
+
 <div id="text-box">
-    {% for line in text %}
-        <p>{{ line }}</p>
+    {% for t in text %}
+        <p>{{ t }}</p>
     {% endfor %}
 </div>
 
-<form method="post">
-
+<form method="post" action="{{ next_url }}">
     <input type="hidden" name="state" value="{{ next_state }}">
+    <input type="hidden" name="carry" value="{{ carry }}">
+
 
     {% if input_type == "text" %}
         <input type="text" name="answer" required>
