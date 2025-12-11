@@ -1,0 +1,37 @@
+# flight_game
+Ohjelmointi 1 projekti
+
+Peli toimii näin: (ei vielä lukittu sisään)
+Valitset lomakohteen (lentokenttä) esim. viidestä eri maasta. Ohjelma arpoo valitsemastasi maasta jonkin suuren lentokentän jonka jälkeen joudut navigoimaan ulos lentokentältä. jokaiselle maalle tulee omat
+"haasteet" esim amerikassa on TSA joka saattaa tehdä random tarkastuksia ja esittää kysymyksiä kuten "oletko terroristi" ja jos valitset väärän vastauksen kysymyksiin tai tehtäviin häviät pelin.
+Kun pääset ulos lentokentältä voit joko lomailla (ohejlma tulostaa pisteitä tai jotain hetken aikaa) tai voit palata suomeen. Turvatarkastuksista ja muista esteistä läpi pääseminen vaatii myös oikeat vastaukset
+kysymyksiin/tehtäviin tai häviät pelin. Idea on tehdä semmone lyhyt ja simppeli peli missä saat tehtäviä ja pari eri vaihtoehoa joista yhdellä voi jatkaa ja muilla häviää pelin. Koomiset tekstit olisi haluttuja
+
+Vähän esimerkkejä
+
+Amerikassa on TSA joka saattaa tulla tekemään yllättävän random tarkastuksen ja jos reagoit väärin (esim lyöt sitä) häviät pelin.
+
+Jossain aasian maassa esim Kiinassa heti kun saavut lentokentälle kaikki alkaa puhumaan sinulle kiinaa ja vaihtoehtoina on vain "häh?" "mitäh?" ja sit ne alkaa puhumaan rikkinäistä englantia
+
+Australiassa saattaa pudota hämähäkki niskaan
+
+Koodi mielessä peli on semi simppeli tehdä. Valitaan vaan joku määrä maita ja niistä tehdään kaikista functiointa (def) jotka callataan kun käyttäjä valitsee sen maan.
+Näyttäisi ehkä tämmöseltä:
+
+print("tervetuloa peliin")
+
+def(amerikka):
+print("saavuit amerikkaan lentokentälle " x )
+
+def(espanja):
+print("saavuit espanjaan lentokentälle " x )
+
+def(kiina):
+print("ni hao fine shyt" lentokenttä x)
+
+print("valitse maa (1) Amerikka (2) Espanja (3) Kiina
+
+#haetaan sql databasesta isot lentokentät valitusta maasta
+
+#arvotaan maan isoista lentokentistä yksi random.randint jutul
+ok 

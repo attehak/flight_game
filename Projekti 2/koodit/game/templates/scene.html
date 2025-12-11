@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <title>Flight Game</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<h1>Flight Game</h1>
+<pre style="white-space: pre-wrap; font-family: monospace; font-size: 14px;">
+    {{ line }}
+</pre>
+<div id="text-box">
+    {% for line in text %}
+        <p>{{ line }}</p>
+    {% endfor %}
+</div>
+
+<form method="post">
+
+    <input type="hidden" name="state" value="{{ next_state }}">
+
+    {% if input_type == "text" %}
+        <input type="text" name="answer" required>
+        <button type="submit">OK</button>
+
+    {% elif choices %}
+        {% for c in choices %}
+            <button name="answer" value="{{ c }}">{{ c }}</button>
+        {% endfor %}
+
+    {% else %}
+        <button type="submit">Jatka</button>
+    {% endif %}
+</form>
+
+</body>
+</html>

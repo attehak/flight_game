@@ -1,0 +1,75 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: "Raleway", sans-serif;
+  color: white;
+}
+
+.bgimg {
+  background-image: url('../kuvat/kuva1.jpg'); 
+  min-height: 100%;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.center-content h1 {
+  font-size: 4em;
+  margin: 0;
+}
+.center-content hr {
+  width: 40%;
+  border: 1px solid grey;
+  margin: 20px auto;
+}
+
+.topbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgb(0, 0, 0); /* Muokkaa top baaria */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  box-sizing: border-box;
+  z-index: 1000;
+}
+
+/* Logo */
+.topbar .logo {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.topbar .nav a {
+  color: white;
+  text-decoration: none;
+  margin-left: 20px;
+  font-size: 1em;
+  transition: color 0.3s;
+}
+.topbar .nav a:hover {
+  color: #0040ff; /* Linkkien väri kun hoveraat niiden päällä */
+}
+
+
+.start-btn {
+  font-size: 2em;
+  padding: 30px 45px;
+  background-color: #000000;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.start-btn:hover {
+  background-color: #00bfff; /* tummempi hoverissa */
+}
+
