@@ -114,7 +114,7 @@ def usa_story(state, answer, carry=None):
     if state == 0:
         return {
             "text": [
-                "Nihao",
+                "Howdy partner",
                 "Olet saapunut lentokentälle.",
                 f"Sinulla on {elamat} elämää. Jokainen väärä vastaus vähentää 1 elämää.",
                 "Tulli-virkailija alkaa kysyä sinulta kysymyksiä."
@@ -131,7 +131,7 @@ def usa_story(state, answer, carry=None):
             
             return {
                 "text": [
-                    "Selvisit kaikista Kiinan lentokentän haasteista!",
+                    "Selvisit kaikista Yhdysvaltojen lentokenttä haasteista!",
                     f"Sinulla on {elamat} elämää jäljellä!",
                     "",
                     "Onneksi olkoon! 🎉"
@@ -144,7 +144,7 @@ def usa_story(state, answer, carry=None):
         question = USA_QUESTIONS[question_index]
         return {
             "text": [
-                f"Kysymys {question_index + 1}/10",
+                f"Kysymys {question_index + 1}/5",
                 f"Elämät jäljellä: {elamat} ❤️",
                 question["kysymys"]
             ],
@@ -162,7 +162,7 @@ def usa_story(state, answer, carry=None):
                 "text": [
                     "✅ Kaikki kysymykset oikein!",
                     f"Elämät jäljellä: {elamat} ❤️",
-                    "Selvisit kaikista Kiinan lentokentän haasteista!",
+                    "Selvisit kaikista Yhdysvaltojen lentokenttä haasteista!",
                     f"Saavuit perille {elamat} elämällä jäljellä!",
                     "",
                     "Onneksi olkoon! 🎉"
@@ -192,7 +192,7 @@ def usa_story(state, answer, carry=None):
             return {
                 "text": [
                     "💀 GAME OVER!",
-                    "Menetit kaikki elämäsi Kiinan lentokentällä.",
+                    "Menetit kaikki elämäsi Yhdysvaltojen lentokentällä.",
                     "Tulli-virkailija ei päästänyt sinua läpi!",
                     "Yritä uudelleen."
                 ],
@@ -222,7 +222,7 @@ def usa_story(state, answer, carry=None):
             "text": [
                 palaute,
                 f"Elämät jäljellä: {elamat} ❤️",
-                f"Kysymys {vastaus_index + 1}/10 valmis. Jatka seuraavaan?"
+                f"Kysymys {vastaus_index + 1}/5 valmis. Jatka seuraavaan?"
             ],
             "choices": ["Seuraava"],
             "next_state": state + 1,

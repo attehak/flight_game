@@ -102,7 +102,7 @@ def intro(state, answer=None, carry=None):
         if maa == "DE": return {"redirect": "/story/germany"}
         if maa == "AU": return {"redirect": "/story/australia"}
         if maa == "CN": return {"redirect": "/story/china"}
-        if maa == "US": return {"redirect": "/story/us"}
+        if maa == "US": return {"redirect": "/story/usa"}
 
         return {
             "text": ["Tuntematon maa."],

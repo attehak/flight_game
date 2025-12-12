@@ -150,7 +150,7 @@ def china_story(state, answer, carry=None):
         question = CHINA_QUESTIONS[question_index]
         return {
             "text": [
-                f"Kysymys {question_index + 1}/10",
+                f"Kysymys {question_index + 1}/5",
                 f"Elämät jäljellä: {elamat} ❤️",
                 question["kysymys"]
             ],
@@ -228,7 +228,7 @@ def china_story(state, answer, carry=None):
             "text": [
                 palaute,
                 f"Elämät jäljellä: {elamat} ❤️",
-                f"Kysymys {vastaus_index + 1}/10 valmis. Jatka seuraavaan?"
+                f"Kysymys {vastaus_index + 1}/5 valmis. Jatka seuraavaan?"
             ],
             "choices": ["Seuraava"],
             "next_state": state + 1,
