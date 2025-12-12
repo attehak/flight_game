@@ -1,4 +1,9 @@
+from airport_data import get_random_large_airport
+from weather import get_weather
+from flask import session
+
 def intro(state, answer=None, carry=None):
+    
 
     # 0 — Nimi kysely
     if state == 0:
@@ -33,22 +38,27 @@ def intro(state, answer=None, carry=None):
     # 2 — lentokentän arvonta
     if state == 2:
         maa = answer
-
-        from airport_data import get_random_large_airport
         kentta = get_random_large_airport(maa)
-        nimi, koodi = kentta
+        
+        if kentta:
+            # Puretaan kolme arvoa: nimi, koodi, kaupunki
+            nimi, koodi, kaupunki = kentta
+            # Tallennetaan kaupunki sessioon myöhempää sää-hakua varten
+            session['city'] = kaupunki
+        else:
+            nimi, koodi, kaupunki = ("Tuntematon", "N/A", "Tuntematon")
+            session['city'] = ""
 
         return {
             "text": [
-                f"Lentokenttäsi: {nimi} ({koodi})",
-                "Jatketaanko?"
+                f"Lentokenttäsi valitusta maasta '{maa}' on: {nimi} ({koodi})",
+                f"Sijainti: {kaupunki}",
+                "Haluatko varmasti jatkaa vai vaihtaa maata?"
             ],
             "choices": ["Jatka", "Vaihda"],
             "next_state": 3,
             "carry": maa
         }
-
-    # 3 — varmistus
     if state == 3:
         if answer == "Vaihda":
             return {
@@ -67,15 +77,22 @@ def intro(state, answer=None, carry=None):
     # 4 — tervetuloa
     if state == 4:
         maa = carry
+        kaupunki = session.get('city', '')
+        
+        # Haetaan sää
+        saa_teksti = get_weather(kaupunki)
+        
         return {
             "text": [
-                "Lento suoritettu!",
-                f"Tervetuloa maahan {maa}."
+                f"Saavuit maahan {maa} (Kaupunki: {kaupunki})!",
+                saa_teksti
             ],
-            "choices": ["Jatka tarinaan"],
+            "choices": ["Jatka seikkailua"],
             "next_state": 5,
             "carry": maa
         }
+    
+    
 
     # 5 — sisäinen maan valinta funktio
     if state == 5:

@@ -33,6 +33,18 @@ SWEDEN = r"""
                       **
 """ tää on kommenttina kunnes saan kaiken muun toimimaa, jos ei ehi nii ei tuu ascii paskaa
 '''
+
+THE_END_ART = r"""
+████████╗██╗  ██╗███████╗     ███████╗███╗   ██╗██████╗ 
+╚══██╔══╝██║  ██║██╔════╝     ██╔════╝████╗  ██║██╔══██╗
+   ██║   ███████║█████╗       █████╗  ██╔██╗ ██║██║  ██║
+   ██║   ██╔══██║██╔══╝       ██╔══╝  ██║╚██╗██║██║  ██║
+   ██║   ██║  ██║███████╗     ███████╗██║ ╚████║██████╔╝
+   ╚═╝   ╚═╝  ╚═╝╚══════╝     ╚══════╝╚═╝  ╚═══╝╚═════╝ 
+Prototype by: Aleksi, Atte, Eetu, Juuso ja Nipa
+"""
+
+
 def sweden_story(state, answer=None):
     # State 0 — alku
     if state == 0:

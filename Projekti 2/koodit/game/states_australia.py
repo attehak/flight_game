@@ -28,6 +28,15 @@ AUSTRALIA_ASCII = r"""
                                                             ****             
                                                             **        
 """
+THE_END_ART = r"""
+████████╗██╗  ██╗███████╗     ███████╗███╗   ██╗██████╗ 
+╚══██╔══╝██║  ██║██╔════╝     ██╔════╝████╗  ██║██╔══██╗
+   ██║   ███████║█████╗       █████╗  ██╔██╗ ██║██║  ██║
+   ██║   ██╔══██║██╔══╝       ██╔══╝  ██║╚██╗██║██║  ██║
+   ██║   ██║  ██║███████╗     ███████╗██║ ╚████║██████╔╝
+   ╚═╝   ╚═╝  ╚═╝╚══════╝     ╚══════╝╚═╝  ╚═══╝╚═════╝ 
+Prototype by: Aleksi, Atte, Eetu, Juuso ja Nipa
+"""
 
 AUSTRALIA_QUESTIONS = [
     {
@@ -186,7 +195,7 @@ def australia_story(state, answer, carry=None):
                 ],
                 "choices": ["Pelaa uudestaan"],
                 "next_state": 21,
-                "ascii": AUSTRALIA_ASCII,
+                "ascii": THE_END_ART,
                 "carry": str(elamat)
             }
         question = AUSTRALIA_QUESTIONS[question_index]
@@ -217,7 +226,7 @@ def australia_story(state, answer, carry=None):
                 ],
                 "choices": ["Pelaa uudestaan"],
                 "next_state": 21,
-                "ascii": AUSTRALIA_ASCII,
+                "ascii": THE_END_ART,
                 "carry": str(elamat)
             }
 
@@ -246,7 +255,7 @@ def australia_story(state, answer, carry=None):
                 ],
                 "choices": ["Pelaa uudestaan"],
                 "next_state": 21,
-                "ascii": AUSTRALIA_ASCII,
+                "ascii": THE_END_ART,
                 "carry": "5"
             }
 
