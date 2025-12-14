@@ -1,4 +1,4 @@
-GERMANY = r"""
+GERMANY_ASCII = r"""
                        *                                     
                        * ****                                
                         *********    ***                     
@@ -32,202 +32,157 @@ THE_END_ART = r"""
 Prototype by: Aleksi, Atte, Eetu, Juuso ja Nipa
 """
 
-def germany_story(state, answer=None):
-    #Intro
+GERMANY_QUESTIONS = [
+    {
+        "kysymys": "What brings you to Germany?",
+        "vaihtoehdot": [
+            ("a", "Vacation"),
+            ("b", "Visiting relatives"),
+            ("c", "I want to bomb this country")
+        ],
+        "oikea": "a",
+        "rangaistus": {"b": 0, "c": 1}
+    },
+    {
+        "kysymys": "Do you have knives or sharp items in your luggage?",
+        "vaihtoehdot": [
+            ("a", "No, I don't."),
+            ("b", "Yes, I do."),
+            ("c", "I'm not sure.")
+        ],
+        "oikea": "a",
+        "rangaistus": {"b": 2, "c": 1}
+    },
+    {
+        "kysymys": "It's Oktoberfest. What do you do?",
+        "vaihtoehdot": [
+            ("a", "Drink until blackout drunk."),
+            ("b", "Drink moderately."),
+            ("c", "Sleep at the airport.")
+        ],
+        "oikea": "a",
+        "rangaistus": {"b": 1, "c": 1}
+    },
+    {
+        "kysymys": "Do you want to hear a fact about Germany?",
+        "vaihtoehdot": [
+            ("a", "No, I just sleep."),
+            ("b", "Yes, tell me a fact.")
+        ],
+        "oikea": "b",
+        "rangaistus": {"a": 0}
+    }
+]
+
+def germany_story(state, answer=None, carry=None):
+
+    # Elämät samalla tavalla kuin Australiassa
+    elamat = int(carry) if carry else 5
+
+    # Restart
+    if state == 21:
+        return {
+            "text": [],
+            "choices": [],
+            "next_state": 0,
+            "redirect": "/game",
+            "ascii": GERMANY_ASCII,
+            "carry": "5"
+        }
+
+    # Intro
     if state == 0:
-        text = [
-            "GERMANY",
-            "Willkommen in Deutschland!",
-            "Joudutko lisäkuulusteluun lentokentällä?"
-        ]
-        return {
-            "text": text,
-            "choices": [
-                "A: toivottavasti en...",
-                "B: Antaa tulla!"
-            ],
-            "next_state": 1
-        }
-    #Arvotaan turvatarkastus
-    elif state == 1:
-        import random
-        tarkastus = random.randint(0, 1)
-
-        if tarkastus == 0:
-            return {
-                "text": [
-                    "Et joutunut lisäkuulusteluun, tervetuloa Saksaan"
-                ],
-                "choices": ["Continue"],
-                "next_state": 99 #Lomailun alkuun
-            }
-        return {
-            "text": ["Jouduit lisäkuulusteluihin.",
-                     "Millä kielellä haluat hoitaa kuulustelut?"
-            ],
-            "choices": ["A: Englanti (virkailija ei osaa saksan kieltä)"],
-            "next_state": 2
-        }
-    #Kielivalinta
-    elif state == 2:
-        if answer == "A":
-            return {
-                "text": [
-                    "Hello, there. What brings you to Germany?"],
-                "choices": [
-                    "A: Vacation",
-                    "B: Visiting relatives",
-                    "C: I want to bomb this country"
-                ],
-                "next_state": 3
-            }
-
-        return {
-            "text": ["Valitse vaihtoehdoista."],
-            "choices": ["Continue"],
-            "next_state": 2
-        }
-    #Syy reissulle
-    elif state == 3:
-        if answer == "C":
-            return {
-                "text": [
-                    "Virkailija ei pitänyt uhkauksestasi.",
-                    "(-1 elämä)"
-                ],
-                "choices": ["Continue"],
-                "next_state": 4
-            }
-        if answer in ("A", "B"):
-            return {
-                "text": ["Alright, next question."],
-                "choices": ["Continue"],
-                "next_state": 4
-            }
-        return {"text": ["Valitse A, B tai C"], "choices": ["Continue"], "next_state": 3}
-    #Tarkastus terävistä esineistä
-    elif state == 4:
-        return {
-            "text": ["Do you have knives or sharp items in your luggage?"],
-            "choices": [
-                "A: No, i dont.",
-                "B: Yes, i do",
-                "C: I'm not sure"
-            ],
-            "next_state": 5
-        }
-    #Tulokset veitsikyselystä
-    elif state == 5:
-        if answer == "B":
-            return {
-                "text": [
-                    "We found them.",
-                    "You are being taken to court.",
-                    "(Hävisit pelin.)"
-                ],
-                "choices": [],
-                "next_state": "end"
-            }
-        if answer == "C":
-            import random
-            loytyi = random.randint(1, 3)
-
-            if loytyi == 3:
-                return {
-                    "text": [
-                        "We found a knife in your luggage.",
-                        "(-1 elämä)",
-                        "You're free to go, but the knife is seized."
-                    ],
-                    "choices": ["Continue"],
-                    "next_state": 99
-                }
-            else:
-                return {
-                    "text": [
-                        "We didn't find anything sharp.",
-                        "You're good to go!"
-                    ],
-                    "choices": ["Continue"],
-                    "next_state": 99
-                }
-        if answer == "A":
-            return {
-                "text": [
-                    "You're good to go!",
-                    "Have fun in Germany!"
-                ],
-                "choices": ["Continue"],
-                "next_state": 99
-            }
-        return {"text": ["Valitse A, B tai C"], "choices": ["Continue"], "next_state": 4}
-    #Lomailun alku
-    elif state == 99:
         return {
             "text": [
-                "Tervetuloa Saksaan!",
-                "On oktoberfest, mitä teet?"
+                "GERMANY 🇩🇪",
+                "Willkommen in Deutschland!",
+                f"Sinulla on {elamat} elämää ❤️",
+                "Tullivirkailija alkaa kysyä kysymyksiä."
             ],
-            "choices": [
-                "A: Juon itseni kaatokänniin",
-                "B: Juon sivistyneesti",
-                "C: Nukun lentokentällä"
-            ],
-            "next_state": 100
+            "choices": ["Aloita"],
+            "next_state": 2,
+            "ascii": GERMANY_ASCII,
+            "carry": str(elamat)
         }
-    #Oktoberfest tulokset
-    elif state == 100:
-        if answer == "A":
-            return {
-                "text": [
-                    "Saksalaiset tykkäsivät että kunnioitit heidän kulttuuria!",
-                    "(+1 Elämä)"
-                ],
-                "choices": ["Continue"],
-                "next_state": 101
-            }
-        if answer in ("B", "C"):
-            return {
-                "text": [
-                    "Saksalaiset pitivät sinua tylsänä.",
-                    "(-1 elämä)"
-                ],
-                "choices": ["Continue"],
-                "next_state": 101
-            }
-        return {"text": ["Valitse A, B tai C"], "choices": ["Continue"], "next_state": 99}
-    #Viimeinen valinta
-    elif state == 101:
+
+    # Kysymykset (parilliset statet)
+    if state % 2 == 0 and 2 <= state <= 8:
+        index = state // 2 - 1
+        question = GERMANY_QUESTIONS[index]
+
         return {
             "text": [
-                "Haluatko mennä nukkumaan puiston penkille vai kuulla faktan saksasta?"
+                f"Kysymys {index + 1}/{len(GERMANY_QUESTIONS)}",
+                f"Elämät jäljellä: {elamat} ❤️",
+                question["kysymys"]
             ],
-            "choices": [
-                "A: Nukkumaan",
-                "B: Haluan kuulla faktan"
-            ],
-            "next_state": 102
+            "choices": [f"{o[0]}) {o[1]}" for o in question["vaihtoehdot"]],
+            "next_state": state + 1,
+            "ascii": GERMANY_ASCII,
+            "carry": str(elamat)
         }
-    #Lopetus
-    elif state == 102:
-        if answer == "A":
-            return {
-                "text": [
-                    "Nukuit unesi ja peli päättyy.",
-                    "Kiitos pelaamisesta!"
-                ],
-                "choices": [],
-                "next_state": "end"
-            }
-        if answer == "B":
-            return {
-                "text": [
-                    "Saksassa on 1500 erilaista leipälajia.",
-                    "Kiitos pelaamisesta!"
-                ],
-                "choices": [],
-                "next_state": "end"
-            }
-        return {"text": ["Valitse A tai B."], "choices": ["Continue"], "next_state": 101}
 
-    return {"text": ["Unexpected state."], "choices": [], "next_state": "end"}
+    # Vastaukset (parittomat statet)
+    if state % 2 == 1:
+        index = (state - 3) // 2
+        question = GERMANY_QUESTIONS[index]
+
+        selected = (answer or "").strip().lower()
+        selected = selected[0] if selected else None
+
+        if selected == question["oikea"]:
+            palaute = "✅ Oikein!"
+        else:
+            penalty = question["rangaistus"].get(selected, 1)
+            elamat -= penalty
+            palaute = f"❌ Väärin! (-{penalty} elämää)"
+
+        # Game over
+        if elamat <= 0:
+            return {
+                "text": [
+                    "💀 GAME OVER!",
+                    "Saksan tulliviranomaiset eivät päästäneet sinua maahan."
+                ],
+                "choices": ["Pelaa uudestaan"],
+                "next_state": 21,
+                "ascii": THE_END_ART,
+                "carry": "5"
+            }
+
+        # Viimeinen kysymys
+        if index == len(GERMANY_QUESTIONS) - 1:
+            return {
+                "text": [
+                    palaute,
+                    f"Elämät jäljellä: {elamat} ❤️",
+                    "Selvisit Saksan seikkailusta!",
+                    "Fun fact: Saksassa on yli 1500 leipälajia 🥨"
+                ],
+                "choices": ["Pelaa uudestaan"],
+                "next_state": 21,
+                "ascii": THE_END_ART,
+                "carry": str(elamat)
+            }
+
+        # Jatko
+        return {
+            "text": [
+                palaute,
+                f"Elämät jäljellä: {elamat} ❤️",
+                "Jatketaanko seuraavaan kysymykseen?"
+            ],
+            "choices": ["Seuraava"],
+            "next_state": state + 1,
+            "ascii": GERMANY_ASCII,
+            "carry": str(elamat)
+        }
+
+    # Fallback
+    return {
+        "text": ["Virhe: tuntematon tila."],
+        "choices": ["Takaisin"],
+        "next_state": 0,
+        "ascii": GERMANY_ASCII,
+        "carry": "5"
+    }

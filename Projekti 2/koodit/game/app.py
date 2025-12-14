@@ -139,6 +139,32 @@ def story_usa_route():
         carry=result.get("carry", "")
     )
 
+@app.route("/story/germany", methods=["GET", "POST"])
+def story_germany_route():
+    from states_germany import germany_story
+
+    state = int(request.values.get("state", 0))
+    answer = request.values.get("answer")
+    carry = request.values.get("carry", "")
+
+    print("STATE:", state, "ANSWER:", repr(answer))
+
+    result = germany_story(state, answer, carry)
+    print("RESULT:", result)
+
+    if "redirect" in result:
+        return redirect(result["redirect"])
+
+    return render_template(
+        "scene.html",
+        text=result["text"],
+        choices=result["choices"],
+        input_type=result.get("input_type", ""),
+        line=result.get("ascii", ""),
+        next_state=result["next_state"],
+        next_url="/story/germany",
+        carry=result.get("carry", "")
+    )
 
 
 print(app.url_map)
