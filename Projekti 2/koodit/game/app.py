@@ -147,7 +147,7 @@ def story_germany_route():
     )
 
 @app.route("/story/sweden", methods=["GET", "POST"])
-def story_usa_route():
+def story_sweden_route():
     state = int(request.values.get("state", 0))
     answer = request.values.get("answer")
     carry = request.values.get("carry", "")
