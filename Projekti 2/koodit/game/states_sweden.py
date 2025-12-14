@@ -1,4 +1,4 @@
-'''
+
 SWEDEN = r"""                       
                                     *                        
                                    ****                      
@@ -31,8 +31,7 @@ SWEDEN = r"""
                       *******                                
                      ***                                  
                       **
-""" tää on kommenttina kunnes saan kaiken muun toimimaa, jos ei ehi nii ei tuu ascii paskaa
-'''
+"""
 
 THE_END_ART = r"""
 ████████╗██╗  ██╗███████╗     ███████╗███╗   ██╗██████╗ 
