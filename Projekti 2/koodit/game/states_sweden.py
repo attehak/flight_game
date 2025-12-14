@@ -43,7 +43,7 @@ THE_END_ART = r"""
 Prototype by: Aleksi, Atte, Eetu, Juuso ja Nipa
 """
 
-USA_QUESTIONS = [
+SWEDEN_QUESTIONS = [
     {
         "kysymys": "Hejsan hur mår du?",
         "vaihtoehdot": [
@@ -140,7 +140,7 @@ def sweden_story(state, answer, carry=None):
 
     if state % 2 == 0 and 2 <= state <= 20:
         question_index = state // 2 - 1
-        if question_index >= len(USA_QUESTIONS):
+        if question_index >= len(SWEDEN_QUESTIONS):
             
             return {
                 "text": [
@@ -154,7 +154,7 @@ def sweden_story(state, answer, carry=None):
                 "ascii": THE_END_ART,
                 "carry": str(elamat)
             }
-        question = USA_QUESTIONS[question_index]
+        question = SWEDEN_QUESTIONS[question_index]
         return {
             "text": [
                 f"Kysymys {question_index + 1}/5",
@@ -169,7 +169,7 @@ def sweden_story(state, answer, carry=None):
 
     if state % 2 == 1 and 3 <= state <= 21:
         vastaus_index = (state - 3) // 2
-        if vastaus_index >= len(USA_QUESTIONS):
+        if vastaus_index >= len(SWEDEN_QUESTIONS):
             
             return {
                 "text": [
@@ -186,7 +186,7 @@ def sweden_story(state, answer, carry=None):
                 "carry": str(elamat)
             }
 
-        question = USA_QUESTIONS[vastaus_index]
+        question = SWEDEN_QUESTIONS[vastaus_index]
 
         selected = (answer or "").strip().lower()
         if selected and selected[0] in ["a", "b", "c"]:
